@@ -388,73 +388,59 @@ function actualizarPanelMinas() {
 }
 
 function verificarGanador() {
-  /*
-      Hay que verificar que todas las minas estén tapadas y que las demás
-      estén descubiertas
-      */
   for (let f = 0; f < filas; f++) {
-    for (let c = 0; c < columnas; c++) {
-      if (tablero[c][f].estado != `descubierto`) {
-        //Si la mina está cubeirta
-        if (tablero[c][f].valor == -1) {
-          //y es una mina
-          //entonces vamos bien
-          continue;
-        } else {
-          //Si encuentra una celda cubierta, que no sea una mina, aún no se ha ganado
-          return;
-        }
+      for (let c = 0; c < columnas; c++) {
+          if (tablero[c][f].estado != `descubierto`) {
+              // Si la celda está cubierta y es una mina
+              if (tablero[c][f].valor == -1) {
+                  continue;  // Entonces vamos bien
+              } else {
+                  // Si encuentra una celda cubierta que no es una mina, aún no se ha ganado
+                  return;
+              }
+          }
       }
-    }
   }
-  //Si al finalizar la comprobación, todas las celdas cubiertas son minas, entonces se ha ganado
+  // Si todas las celdas cubiertas son minas, entonces se ha ganado
   let tableroHTML = document.getElementById("tablero");
   tableroHTML.style.background = "green";
   enJuego = false;
   if (soundEnabled) {
-    sonido_ganador.play();
-    sonido_win.play();
+      sonido_ganador.play();
+      sonido_win.play();
   }
-
   detenerCronometro();
-  let resultado = enJuego ? "ganó" : "perdió";
-  guardarPartida(resultado);
+  guardarPartida("ganó");  // Guardar directamente como "ganó"
 }
 
 function verificarPerdedor() {
   for (let f = 0; f < filas; f++) {
-    for (let c = 0; c < columnas; c++) {
-      //Si hay una mina descubierta, entonces se ha perdido
-      if (tablero[c][f].valor == -1) {
-        if (tablero[c][f].estado == `descubierto`) {
-          let tableroHTML = document.getElementById("tablero");
-          tableroHTML.style.background = "red";
-          enJuego = false;
-          if (soundEnabled) {
-            sonido_perdedor.play();
-            sonido_gameover.play();
+      for (let c = 0; c < columnas; c++) {
+          // Si hay una mina descubierta, entonces se ha perdido
+          if (tablero[c][f].valor == -1 && tablero[c][f].estado == `descubierto`) {
+              let tableroHTML = document.getElementById("tablero");
+              tableroHTML.style.background = "red";
+              enJuego = false;
+              if (soundEnabled) {
+                  sonido_perdedor.play();
+                  sonido_gameover.play();
+              }
+              detenerCronometro();
+              guardarPartida("perdió");
+              // Mostrar las demás minas ocultas
+              for (let f = 0; f < filas; f++) {
+                  for (let c = 0; c < columnas; c++) {
+                      if (tablero[c][f].valor == -1) {
+                          let celda = document.getElementById(`celda-${c}-${f}`);
+                          celda.innerHTML = `<i class="fas fa-bomb"></i>`;
+                          celda.style.color = "black";
+                      }
+                  }
+              }
+              return;  // Finaliza la función una vez se ha perdido
           }
-
-          detenerCronometro();
-        }
       }
-    }
   }
-  if (enJuego) {
-    return;
-  }
-  //Hay que mostrar las demás minas que están ocultas
-  for (let f = 0; f < filas; f++) {
-    for (let c = 0; c < columnas; c++) {
-      if (tablero[c][f].valor == -1) {
-        let celda = document.getElementById(`celda-${c}-${f}`);
-        celda.innerHTML = `<i class="fas fa-bomb"></i>`;
-        celda.style.color = "black";
-      }
-    }
-  }
-  let resultado = enJuego ? "ganó" : "perdió";
-  guardarPartida(resultado);
 }
 
 /*
