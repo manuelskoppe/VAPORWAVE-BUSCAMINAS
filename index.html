@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Buscaminas</title>
+    <!-- Vinculación de la hoja de estilos de font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Vinculación de tu hoja de estilos personalizada -->
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    
+    <!-- Aquí iría todo el contenido que tienes dentro de la etiqueta body -->
+
+    <br>
+
+    <button id="juego-nuevo" onclick="nuevoJuego()">
+        Juego Nuevo
+    </button>
+
+    <span id="nombreDelJugador"></span>
+
+    <button id="toggleSound">Efectos de Sonido</button>
+
+    <button id="Ajustes" onclick="ajustes()">
+        <i class="fas fa-cog"></i>
+    </button>
+
+    <span id="cronometro">00:00</span>
+
+    <button id="instrucciones" onclick="mostrarInstrucciones()">
+        Instrucciones
+    </button>
+
+    <span id="minas">
+        000
+    </span>
+
+    <button onclick="mostrarCreditos()" id="creditos">Créditos</button>
+
+    <!-- Agregar el botón de radio justo después del botón de Créditos -->
+<button id="radio" onclick="toggleRadio()">Radio</button>
+
+<!-- Agregar el iframe oculto para el video de YouTube -->
+<div id="youtube-audio" style="display: none;"></div>
+
+    <table cellspacing="0" cellpadding="0" id="tablero"></table>
+
+  
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <!-- Vinculación del script de sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.7/dist/sweetalert2.all.min.js"></script>
+    <!-- Vinculación de tu script personalizado -->
+    <script src="index.js"></script>
+</body>
+
+</html>
