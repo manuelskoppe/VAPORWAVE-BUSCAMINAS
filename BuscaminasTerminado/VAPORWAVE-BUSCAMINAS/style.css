@@ -1,0 +1,35 @@
+/* Base Reset */
+* {
+    transition: all 1s;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    font-family: 'MS Sans Serif', 'Microsoft Sans Serif', Arial, sans-serif;
+  }
+  
+  body {
+    background-color: #008080; /* Typical Windows 98 teal background */
+    color: #000000;
+  }
+  
+  /* Button Style to mimic Windows 98 */
+  .button {
+    background-color: #C0C0C0; /* Grey color */
+    border: 2px outset #FFFFFF;
+    color: #000000;
+    padding: 2px 6px;
+    margin: 0 2px;
+    font-size: 12px; /* Typical Windows 98 font size */
+    text-align: center;
+  }
+  
+  .button:hover {
+    background-color: #A0A0A0; /* Darker grey on hover */
+  }
+  
+  .button:active {
+    border-style: inset; /* Inset border on active to mimic pressed button */
+  }
+  
+/* Apply the button style to your elements */

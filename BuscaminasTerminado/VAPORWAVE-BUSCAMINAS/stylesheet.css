@@ -1,0 +1,521 @@
+* {
+  transition: all 1s;
+  box-sizing: border-box;
+
+}
+
+body {
+  text-align: center;
+  font-family: calibri;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  background: black;
+  /* Cambio de fondo a negro */
+  background-image: url("fondo vapor.png");
+}
+
+
+
+/* Contenedor para todos los elementos que quieres alinear horizontalmente */
+.container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan si no caben en una sola línea */
+  gap: 8px; /* Espacio entre los elementos */
+  width: 100%;
+}
+
+
+
+table {
+  background: #e8e8e8;
+  /* Fondo de metal */
+  margin: 20px auto;
+}
+
+td {
+  border: rgba(0, 0, 0, 0.8) 2px solid;
+  /* Borde más oscuro y grueso */
+  text-align: center;
+  font-size: 120%;
+  color: white;
+  /* Texto blanco */
+  box-shadow: inset 4px 4px 0 0 rgb(255, 255, 255),
+    /* Sombra más prominente */
+    inset -4px -4px 0 0 rgba(0, 0, 0, 0.7);
+
+
+}
+/* Estilos base para #juego-nuevo, #minas, y #error */
+#juego-nuevo, #minas, #error {
+  width: 160px;
+  background: #1A1A2E; /* Fondo oscuro para resaltar los colores neón */
+  border: 2px solid #12d8fa; /* Borde neón */
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0px 0px 15px 3px rgba(18, 216, 250, 0.5); /* Sombra neón */
+  font-family: 'Tahoma', sans-serif;
+  border-radius: 10px;
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+  color: #32dfec; /* Texto neón */
+  text-shadow: 0 0 5px #12d8fa; /* Sombra de texto neón */
+}
+
+/* Estilos para el título con inspiración vaporwave-cyberpunk */
+.title-bar {
+  background-color: #7209b7; /* Color de fondo morado */
+  height: 25px;
+  line-height: 25px;
+  color: #e0eaff; /* Color de texto claro */
+  font-weight: bold;
+  padding-left: 10px;
+  font-size: 120%;
+  border-bottom: 2px solid #560bad; /* Borde más oscuro para dar profundidad */
+  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+}
+
+/* Estilos para el mensaje */
+.message {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #32dfec; /* Color neón para el mensaje */
+  text-shadow: 0 0 5px #12d8fa; /* Sombra de texto neón */
+}
+
+/* Estilos para el hover y el active de #juego-nuevo, #minas, y #error */
+#juego-nuevo:hover .title-bar, #minas:hover .title-bar, #error:hover .title-bar {
+  background-color: #5a189a; /* Color más oscuro al pasar el ratón */
+  border-bottom: 2px solid #3c096c;
+}
+
+#juego-nuevo:active .title-bar, #minas:active .title-bar, #error:active .title-bar {
+  background-color: #3a0ca3; /* Color aún más oscuro al pulsar */
+  border-bottom: 2px solid #3a0ca3;
+}
+
+#juego-nuevo:hover, #minas:hover, #error:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 20px 5px rgba(18, 216, 250, 0.75); /* Sombra más grande al pasar el ratón */
+}
+
+#juego-nuevo:active, #minas:active, #error:active {
+  transform: scale(0.98);
+  box-shadow: 0px 0px 25px 6px rgba(18, 216, 250, 1); /* Sombra más intensa al pulsar */
+}
+
+#Ajustes {
+  width: 160px;
+  background: #1A1A2E; /* Fondo oscuro para resaltar los colores neón */
+  border: 2px solid #12d8fa; /* Borde neón */
+  padding: 0; /* El padding interno es manejado por los div internos */
+  margin: 10px;
+  box-shadow: 0px 0px 15px 3px rgba(18, 216, 250, 0.5); /* Sombra neón */
+  font-family: 'Tahoma', sans-serif;
+  border-radius: 10px;
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+  text-align: center; /* Alineación del texto al centro */
+  color: #32dfec; /* Color del texto neón */
+  text-shadow: 0 0 5px #12d8fa; /* Sombra de texto neón */
+}
+
+#Ajustes .title-bar {
+  background-color: #7209b7; /* Color de fondo morado */
+  height: 25px;
+  line-height: 25px;
+  color: #e0eaff; /* Color de texto claro */
+  font-weight: bold;
+  padding-left: 10px;
+  font-size: 120%;
+  border-bottom: 2px solid #560bad; /* Borde más oscuro para dar profundidad */
+  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+}
+
+#Ajustes .message {
+  padding: 10px; /* Padding interno para el mensaje */
+  font-size: 14px;
+  color: #32dfec; /* Color neón para el mensaje */
+  text-shadow: 0 0 5px #12d8fa; /* Sombra de texto neón */
+}
+
+#Ajustes:hover .title-bar {
+  background-color: #5a189a; /* Color más oscuro al pasar el ratón */
+  border-bottom: 2px solid #3c096c;
+}
+
+#Ajustes:active .title-bar {
+  background-color: #3a0ca3; /* Color aún más oscuro al pulsar */
+  border-bottom: 2px solid #3a0ca3;
+}
+
+#Ajustes:hover {
+  background-color: #29274c; /* Fondo ligeramente más claro al pasar el ratón */
+  transform: scale(1.05);
+  box-shadow: 0px 0px 20px 5px rgba(18, 216, 250, 0.75); /* Sombra más grande al pasar el ratón */
+}
+
+#Ajustes:active {
+  transform: scale(0.98);
+  box-shadow: 0px 0px 25px 6px rgba(18, 216, 250, 1); /* Sombra más intensa al pulsar */
+}
+
+#instrucciones {
+  width: 170px;
+  background: #1A1A2E; /* Fondo oscuro para resaltar los colores neón */
+  border: 2px solid #12d8fa; /* Borde neón */
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0px 0px 15px 3px rgba(18, 216, 250, 0.5); /* Sombra neón */
+  font-family: 'Tahoma', sans-serif;
+  border-radius: 10px;
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+  color: #32dfec; /* Color del texto neón */
+  text-shadow: 0 0 5px #12d8fa; /* Sombra de texto neón */
+}
+
+#instrucciones .title-bar {
+  background-color: #7209b7; /* Color de fondo morado */
+  height: 25px;
+  line-height: 25px;
+  color: #e0eaff; /* Color de texto claro */
+  font-weight: bold;
+  padding-left: 10px;
+  font-size: 120%;
+  border-bottom: 2px solid #560bad; /* Borde más oscuro para dar profundidad */
+  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+}
+
+#instrucciones .message {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #32dfec; /* Color neón para el mensaje */
+  text-shadow: 0 0 5px #12d8fa; /* Sombra de texto neón */
+}
+
+#instrucciones:hover .title-bar {
+  background-color: #5a189a; /* Color más oscuro al pasar el ratón */
+  border-bottom: 2px solid #3c096c;
+}
+
+#instrucciones:active .title-bar {
+  background-color: #3a0ca3; /* Color aún más oscuro al pulsar */
+  border-bottom: 2px solid #3a0ca3;
+}
+
+#instrucciones:hover {
+  background-color: #29274c; /* Fondo ligeramente más claro al pasar el ratón */
+  transform: scale(1.05);
+  box-shadow: 0px 0px 20px 5px rgba(18, 216, 250, 0.75); /* Sombra más grande al pasar el ratón */
+}
+
+#instrucciones:active {
+  transform: scale(0.98);
+  box-shadow: 0px 0px 25px 6px rgba(18, 216, 250, 1); /* Sombra más intensa al pulsar */
+}
+
+#cronometro {
+  width: 160px;
+  background: #1A1A2E; /* Fondo oscuro para destacar los colores neón */
+  border: 2px solid #12d8fa; /* Borde neón */
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0px 0px 15px 3px rgba(18, 216, 250, 0.5); /* Sombra neón */
+  font-family: 'Tahoma', sans-serif;
+  border-radius: 10px;
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+  color: #32dfec; /* Color de texto neón */
+  text-shadow: 0 0 5px #12d8fa; /* Sombra de texto neón */
+}
+
+.cronometro-title-bar {
+  background-color: #7209b7; /* Color de fondo morado */
+  height: 25px;
+  line-height: 25px;
+  color: #e0eaff; /* Color de texto claro */
+  font-weight: bold;
+  padding-left: 10px;
+  font-size: 120%;
+  border-bottom: 2px solid #560bad; /* Borde más oscuro para dar profundidad */
+  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+}
+
+#cronometro:hover .cronometro-title-bar {
+  background-color: #5a189a; /* Color más oscuro al pasar el ratón */
+  border-bottom: 2px solid #3c096c;
+}
+
+#cronometro:active .cronometro-title-bar {
+  background-color: #3a0ca3; /* Color aún más oscuro al hacer clic */
+  border-bottom: 2px solid #3a0ca3;
+}
+
+#cronometro:hover {
+  background-color: #29274c; /* Fondo ligeramente más claro al pasar el ratón */
+  transform: scale(1.05);
+  box-shadow: 0px 0px 20px 5px rgba(18, 216, 250, 0.75); /* Sombra más grande al pasar el ratón */
+}
+
+#cronometro:active {
+  transform: scale(0.98);
+  box-shadow: 0px 0px 25px 6px rgba(18, 216, 250, 1); /* Sombra más intensa al hacer clic */
+}
+
+
+#nombre-del-jugador {
+  width: 160px;
+  background: #1A1A2E; /* Fondo oscuro para resaltar los colores neón */
+  border: 2px solid #12d8fa; /* Borde neón */
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0px 0px 15px 3px rgba(18, 216, 250, 0.5); /* Sombra neón */
+  font-family: 'Tahoma', sans-serif;
+  border-radius: 10px;
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+  color: #32dfec; /* Color de texto neón */
+  text-shadow: 0 0 5px #12d8fa; /* Sombra de texto neón */
+}
+
+.nombre-del-jugador-title-bar {
+  background-color: #7209b7; /* Color de fondo morado */
+  height: 25px;
+  line-height: 25px;
+  color: #e0eaff; /* Color de texto claro */
+  font-weight: bold;
+  padding-left: 10px;
+  font-size: 120%;
+  border-bottom: 2px solid #560bad; /* Borde más oscuro para efecto de profundidad */
+  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+}
+
+.nombre-del-jugador-message {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #e0eaff; /* Manteniendo el estilo de texto claro */
+}
+
+#nombre-del-jugador:hover .nombre-del-jugador-title-bar {
+  background-color: #5a189a; /* Oscurecer el morado al pasar el ratón */
+  border-bottom: 2px solid #3c096c;
+}
+
+#nombre-del-jugador:active .nombre-del-jugador-title-bar {
+  background-color: #3a0ca3; /* Color más oscuro al hacer clic */
+  border-bottom: 2px solid #3a0ca3;
+}
+
+#nombre-del-jugador:hover {
+  background-color: #29274c; /* Fondo ligeramente más claro al pasar el ratón */
+  transform: scale(1.05);
+  box-shadow: 0px 0px 20px 5px rgba(18, 216, 250, 0.75); /* Sombra más grande al pasar el ratón */
+}
+
+#nombre-del-jugador:active {
+  transform: scale(0.98);
+  box-shadow: 0px 0px 25px 6px rgba(18, 216, 250, 1); /* Sombra más intensa al hacer clic */
+}
+
+#creditos {
+  width: 160px;
+  background: #1A1A2E; /* Fondo oscuro para resaltar los colores neón */
+  border: 2px solid #12d8fa; /* Borde neón */
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0px 0px 15px 3px rgba(18, 216, 250, 0.5); /* Sombra neón */
+  font-family: 'Tahoma', sans-serif;
+  border-radius: 10px;
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+  color: #32dfec; /* Color de texto neón */
+  text-shadow: 0 0 5px #12d8fa; /* Sombra de texto neón */
+}
+
+.creditos-title-bar {
+  background-color: #7209b7; /* Color de fondo morado */
+  height: 25px;
+  line-height: 25px;
+  color: #e0eaff; /* Color de texto claro */
+  font-weight: bold;
+  padding-left: 10px;
+  font-size: 120%;
+  border-bottom: 2px solid #560bad; /* Borde más oscuro para efecto de profundidad */
+  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+}
+
+.creditos-message {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #e0eaff; /* Manteniendo el estilo de texto claro */
+}
+
+#creditos:hover .creditos-title-bar {
+  background-color: #5a189a; /* Oscurecer el morado al pasar el ratón */
+  border-bottom: 2px solid #3c096c;
+}
+
+#creditos:active .creditos-title-bar {
+  background-color: #3a0ca3; /* Color más oscuro al hacer clic */
+  border-bottom: 2px solid #3a0ca3;
+}
+
+#creditos:hover {
+  background-color: #29274c; /* Fondo ligeramente más claro al pasar el ratón */
+  transform: scale(1.05);
+  box-shadow: 0px 0px 20px 5px rgba(18, 216, 250, 0.75); /* Sombra más grande al pasar el ratón */
+}
+
+#creditos:active {
+  transform: scale(0.98);
+  box-shadow: 0px 0px 25px 6px rgba(18, 216, 250, 1); /* Sombra más intensa al hacer clic */
+}
+
+
+#toggleSound {
+  width: 160px;
+  background: #1A1A2E; /* Fondo oscuro para resaltar los colores neón */
+  border: 2px solid #12d8fa; /* Borde neón */
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0px 0px 15px 3px rgba(18, 216, 250, 0.5); /* Sombra neón */
+  font-family: 'Tahoma', sans-serif;
+  border-radius: 10px;
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+  color: #32dfec; /* Color de texto neón */
+  text-shadow: 0 0 5px #12d8fa; /* Sombra de texto neón */
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px; /* Ajuste para que se adapte al botón */
+}
+
+#toggleSound:hover {
+  background-color: #29274c; /* Fondo ligeramente más claro al pasar el ratón */
+  transform: scale(1.05);
+  box-shadow: 0px 0px 20px 5px rgba(18, 216, 250, 0.75); /* Sombra más grande al pasar el ratón */
+}
+
+#toggleSound:active {
+  transform: scale(0.98);
+  box-shadow: 0px 0px 25px 6px rgba(18, 216, 250, 1); /* Sombra más intensa al hacer clic */
+}
+
+.toggleSound-title-bar {
+  background-color: #7209b7; /* Color de fondo morado */
+  height: 25px; 
+  line-height: 25px; 
+  color: #e0eaff; /* Color de texto claro */
+  font-weight: bold; 
+  padding-left: 10px; 
+  font-size: 120%;
+  border-bottom: 2px solid #560bad; /* Borde más oscuro para efecto de profundidad */
+  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+}
+
+
+
+
+
+
+
+
+
+#radio {
+  width: 160px;
+  background: #1A1A2E; /* Fondo oscuro para resaltar los colores neón */
+  border: 2px solid #12d8fa; /* Borde neón */
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0px 0px 15px 3px rgba(18, 216, 250, 0.5); /* Sombra neón */
+  font-family: 'Tahoma', sans-serif;
+  cursor: pointer;
+  user-select: none; /* Evitar la selección de texto */
+  height: auto; /* Ajusta la altura al contenido o especifica una altura fija si lo prefieres */
+  color: #32dfec; /* Color de texto neón */
+  text-shadow: 0 0 5px #12d8fa; /* Sombra de texto neón */
+  border-radius: 10px;
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+#radio:hover {
+  background-color: #29274c; /* Fondo ligeramente más claro al pasar el ratón */
+  transform: scale(1.05);
+  box-shadow: 0px 0px 20px 5px rgba(18, 216, 250, 0.75); /* Sombra más grande al pasar el ratón */
+}
+
+#radio:active {
+  transform: scale(0.98);
+  box-shadow: 0px 0px 25px 6px rgba(18, 216, 250, 1); /* Sombra más intensa al hacer clic */
+}
+
+
+/* Resto del código ... */
+
+
+#creditos:hover, #radio:hover {
+  transform: scale(1.05);
+}
+
+#creditos:active, #radio:active {
+  transform: scale(0.98);
+}
+
+.creditos-title-bar, .button-title-bar {
+  background-color: #0A74DA; 
+  height: 25px; 
+  line-height: 25px; 
+  color: white; 
+  font-weight: bold; 
+  padding-left: 10px; 
+  font-size: 120%;
+  border-bottom: 2px solid #0A54BA;
+}
+
+.creditos-message, .button-message {
+  margin-top: 20px; 
+  text-align: center; 
+  font-size: 14px;
+}
+
+#creditos:hover .creditos-title-bar, #radio:hover .button-title-bar {
+  background-color: #084D9E; 
+}
+
+#creditos:active .creditos-title-bar, #radio:active .button-title-bar {
+  background-color: #063E7D; 
+}
+
+#radio {
+  height: 100px;
+}
+
+#boton-imagen {
+  cursor: pointer;
+  /* No es necesario definir display: inline-block aquí porque .container ya usa flex */
+}
+
+#boton-imagen img {
+  width: 50px; /* o el tamaño que desees */
+  height: auto; /* mantiene la proporción de la imagen */
+  /* No es necesario el margin-left si usas gap en .container */
+}
+
+.creditos-title-bar, .button-title-bar {
+  background-color: #7209b7; /* Cambiado a color morado */
+  /* Resto de tus estilos */
+}
+
+#creditos:hover .creditos-title-bar, #radio:hover .button-title-bar {
+  background-color: #5a189a; /* Oscurecer el morado al pasar el ratón, ajustado al color deseado */
+}
+
+#creditos:active .creditos-title-bar, #radio:active .button-title-bar {
+  background-color: #3a0ca3; /* Color más oscuro al hacer clic, ajustado al color deseado */
+}
