@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscaminas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+<header class="main-header">
+    <div class="container">
+        <!-- Botón Juego Nuevo -->
+        <div id="juego-nuevo" class="window" onclick="nuevoJuego()">
+            <div class="title-bar">
+                <div class="title-bar-text">Juego Nuevo</div>
+            </div>
+            <div class="window-body">
+                <p class="message">REINCIAME!!</p>
+            </div>
+        </div>
+        
+        <!-- Nombre del Jugador -->
+        <div id="nombre-del-jugador" onclick="mostrarHistorialModal()">
+            <div class="nombre-del-jugador-title-bar">Nombre</div>
+            <div class="nombre-del-jugador-message">Pulsame para ver el historial</div>
+        </div>
+        
+        <!-- Botón de Sonido -->
+        <div id="toggleSound">
+            <div class="creditos-title-bar">
+                <span id="soundText">Sonido</span>
+            </div>
+        </div>
+        
+        <!-- Botón Ajustes -->
+        <button id="Ajustes" onclick="ajustes()">
+            <div class="title-bar">Ajustes</div>
+            <div class="message"><i class="fas fa-cog"></i></div>
+        </button>
+        
+        <!-- Cronómetro -->
+        <div id="cronometro">
+            <div class="cronometro-title-bar">00:00</div>
+            <div class="message">TIEMPO TRANSCURRIDO!!</div>
+        </div>
+        
+        <!-- Instrucciones -->
+        <div id="instrucciones" onclick="mostrarInstrucciones()">
+            <div class="title-bar">Instrucciones</div>
+            <div class="message">APRENDER A JUGAR!!</div>
+        </div>
+        
+        <!-- Minas -->
+        <div id="minas">
+            <div class="title-bar">MINAS</div>
+            <div class="message">40</div>
+        </div>
+        
+        <!-- Créditos -->
+        <div id="creditos" onclick="mostrarCreditos()">
+            <div class="creditos-title-bar">CREDITOS!!</div>
+            <div class="creditos-message">¿Piensas que lo he hecho solo?</div>
+        </div>
+        
+        <!-- Botón Countdown -->
+        <div id="boton-cuenta-atras" class="creditos-container" onclick="tuFuncionDeCuentaAtras();">
+            <div class="creditos-title-bar"> Countdown</div>
+            <div class="creditos-message">¿Listo para comenzar?</div>
+        </div>
+        
+        <!-- Botón de Radio -->
+        <div id="radio" onclick="toggleRadio()" class="styled-button">
+            <div class="button-title-bar">Radio</div>
+            <div class="button-message">RADIO VAPORWAVE</div>
+        </div>
+        
+    </div>
+</header>
+
+<!-- Aquí comienza el cuerpo principal del juego -->
+<div class="game-body">
+    <!-- Tablero del Juego -->
+    <table cellspacing="0" cellpadding="0" id="tablero"></table>
+    
+    <!-- Botón de Imagen -->
+    <div id="boton-imagen" >
+        <img src="icono-2.png" alt="Descripción de la imagen" />
+    </div>
+
+
+<!-- Agregar el iframe oculto para el video de YouTube -->
+<div id="youtube-audio" style="display: none;"></div>
+
+    <table cellspacing="0" cellpadding="0" id="tablero"></table>
+
+  
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <!-- Vinculación del script de sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.7/dist/sweetalert2.all.min.js"></script>
+    <!-- Vinculación de tu script personalizado -->
+</div>
+    <script src="index.js"></script>
+</body>
+
+</html>
