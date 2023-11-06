@@ -18,7 +18,7 @@ let juegoIniciado = false;
 let tiempoInicio;
 let intervalo;
 let soundEnabled = false; // suponiendo que quieres que el sonido esté activado por defecto
-let duracionCuentaAtras = 0.10 * 60 * 1000; // Duración de la cuenta atrás en milisegundos (ejemplo: 5 minutos)
+let duracionCuentaAtras = 0.60 * 60 * 1000; // Duración de la cuenta atrás en milisegundos 
 
 
 /* FUNCION PARA REINCIAR*/
