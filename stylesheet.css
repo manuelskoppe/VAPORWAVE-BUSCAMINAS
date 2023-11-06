@@ -600,3 +600,24 @@ td:hover {
   transform: scale(0.98);
   box-shadow: 0px 0px 25px 6px rgba(18, 216, 250, 1); /* Sombra más intensa al pulsar */
 }
+
+
+.neon-box {
+  width: 31%;
+  background: #1A1A2E; /* Fondo oscuro para destacar los colores neón */
+  border: 2px solid #12d8fa; /* Borde neón */
+  padding: 10px;
+  margin: 10px;
+  margin-left: 34.5%;
+  box-shadow: 0px 0px 15px 3px rgba(18, 216, 250, 0.5); /* Sombra neón */
+  font-family: 'Tahoma', sans-serif;
+  border-radius: 10px;
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+  color: #32dfec; /* Color de texto neón */
+  text-shadow: 0 0 5px #12d8fa; /* Sombra de texto neón */
+  
+  
+}
+
+/* Asumiendo que quieres también los efectos hover y active: */
+
