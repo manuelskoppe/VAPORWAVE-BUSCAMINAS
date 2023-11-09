@@ -17,23 +17,26 @@
   <br>
 
 
+  <div class="contenedor-juegos">
+    <div id="nombre-del-jugador" onclick="mostrarHistorialModal()" class="boton-juego">
+      <div class="boton-juego-content">Historial</div>
+    </div>
   
-  <div id="nombre-del-jugador" onclick="mostrarHistorialModal()">
-    <div class="nombre-del-jugador-title-bar">Historial</div>
-    <div class="nombre-del-jugador-message">Pulsame para ver el historial</div>
-</div>
-
-  <span id="juego-nuevo" onclick="nuevoJuego()">
-    Juego Nuevo
-  </span>
-
-  <span id="minas">
-    000
-  </span>
-
-  <span id="Ajustes" onclick="ajustes()">
-    <i class="fas fa-cog"></i>
-  </span>
+    <div id="juego-nuevo" onclick="nuevoJuego()" class="boton-juego">
+      <div class="boton-juego-content">Juego Nuevo</div>
+    </div>
+  
+    <div id="minas" class="boton-juego">
+      <div class="boton-juego-content">000</div>
+    </div>
+  
+    <div id="Ajustes" onclick="ajustes()" class="boton-juego">
+      <div class="boton-juego-content">
+        <i class="fas fa-cog"></i>
+      </div>
+    </div>
+  </div>
+  
 
   <table cellspacing="0" cellpadding="0" id="tablero">
   </table>
@@ -43,13 +46,13 @@
     <!-- ... -->
   </div>
 
- <!-- Modal Overlay -->
-<div id="miModal" class="modal" style="display:none;"> <!-- Asegúrate de inicializarlo como oculto -->
-  <!-- Modal Content -->
+
+<div id="miModal" class="modal" style="display:none;"> 
+ 
   <div id="miModal2" class="modal-content">
-    <!-- Botón para cerrar el modal -->
+   
     <span class="close">&times;</span>
-    <!-- Texto del modal -->
+    
     <p id="modal-text">Un jugador ha perdido el juego.</p>
   </div>
 </div>
@@ -175,7 +178,7 @@
   tableroHTML.innerHTML = html;
   tableroHTML.style.width = columnas * lado + "px";
   tableroHTML.style.height = filas * lado + "px";
-  tableroHTML.style.borderCollapse = 'collapse'; // To remove any space between the borders
+  tableroHTML.style.borderCollapse = 'collapse'; 
   tableroHTML.style.borderColor = '#7B7B7B';
   tableroHTML.style.background = "linear-gradient(145deg, #9DB1B6, #B8C6D1)";
 }
@@ -359,6 +362,7 @@
       tableroHTML.style.background = "green"
       enJuego = false
       mostrarModal(jugadores[jugadorActual].nombre + " ha GANADO el juego!");
+      guardarPartida(jugadores[jugadorActual].nombre + " ha GANADO el juego!");
       document.getElementById('miModal').style.display = 'flex';
       
  
@@ -371,6 +375,7 @@
         tableroHTML.style.background = "red"
         enJuego = false
         mostrarModal(jugadores[jugadorActual].nombre + " ha perdido el juego!");
+        guardarPartida(jugadores[jugadorActual].nombre + " ha perdido el juego!");
         document.getElementById('miModal').style.display = 'flex';
         mostrarMinas();
        
@@ -411,8 +416,6 @@ function mostrarModal(mensaje) {
     }
   }
 }
-
-
 
     /*
         Este servirá para dar un seguimiento lógico de 
@@ -504,9 +507,9 @@ function mostrarHistorialModal() {
   let historial = JSON.parse(localStorage.getItem("historialPartidas")) || [];
   let mensajeHistorial = historial
     .map((partida, index) => {
-      return `<b>${index + 1}.</b> Fecha: ${partida.fecha}, Resultado: ${
+      return ` Resultado: ${
         partida.resultado
-      }, Tiempo: ${partida.tiempo}`;
+      }, `;
     })
     .join("<br>");
 
@@ -530,10 +533,9 @@ localStorage.removeItem("historialPartidas");
 function guardarPartida(resultado) {
   // Obtener el historial existente
   let historial = JSON.parse(localStorage.getItem("historialPartidas")) || [];
- 
 
   // Añadir la nueva partida al historial
-  historial.push({ fecha: fecha, resultado: resultado, tiempo: tiempo });
+  historial.push({ resultado: resultado });
 
   // Guardar el historial actualizado
   localStorage.setItem("historialPartidas", JSON.stringify(historial));
