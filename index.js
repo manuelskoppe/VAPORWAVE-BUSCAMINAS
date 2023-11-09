@@ -334,10 +334,7 @@ function abrirArea(c, f) {
   }
 }
 
-/*
-        Aquí nos encargaremos del comportamiento visual según el estado 
-        lógico del tablero de juego
-    */
+
 function refrescarTablero() {
   for (let f = 0; f < filas; f++) {
     for (let c = 0; c < columnas; c++) {
@@ -540,6 +537,7 @@ document
       html: `
         <p>Desarrollador: Manu</p>
         <p>Diseño: JEFF APORTA DE YOUTUBE. </p>
+        <p>Historial:Me ayudo con el codigo y debugeo un amigo programador (victor). </p>
         <p>Efectos de sonido: AGE OF EMPIRES 2 Y STREET FIGHTER 2</p>
         <p>Música:VAPORWAVE RADIO</p>
         <p>DEJEN SU LIKE Y APROBADO ✌️</p>
@@ -556,11 +554,6 @@ document
       }
     });
 }
-
-  
-  // ... tu CSS sigue igual ...
-  
-  
 
 function mostrarHistorialModal() {
   let historial = JSON.parse(localStorage.getItem("historialPartidas")) || [];
@@ -616,6 +609,9 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
+function onPlayerReady(event) {
+
+}
 
 
 function toggleRadio() {
@@ -682,7 +678,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 function iniciarCronometro(cuentaAtras = false) {
-  clearInterval(intervalo); // Detiene cualquier intervalo que ya esté corriendo.
+  clearInterval(intervalo); 
   tiempoInicio = Date.now();
 
   intervalo = setInterval(function () {
