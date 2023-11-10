@@ -335,6 +335,7 @@ function abrirArea(c, f) {
 }
 
 
+
 function refrescarTablero() {
   for (let f = 0; f < filas; f++) {
     for (let c = 0; c < columnas; c++) {
@@ -352,7 +353,7 @@ function refrescarTablero() {
             break;
           default:
             celda.innerHTML = tablero[c][f].valor;
-            console.log(tablero[c][f].valor);
+          
             break;
         }
       }
