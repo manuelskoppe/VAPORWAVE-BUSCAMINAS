@@ -251,13 +251,13 @@ function añadirEventos() {
         Está función se encargará de destapar las celdas que rodean a la celda
         a la que se le dio doble clic
     */
-function dobleClic(celda, c, f, me) {
+/*function dobleClic(celda, c, f, me) {
   if (!enJuego) {
     return;
   }
   abrirArea(c, f);
   refrescarTablero();
-}
+}*/
 
 /*
         Esta función se encargará de los comportamientos de clic derecho y clic izquierdo
